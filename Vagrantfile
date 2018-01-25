@@ -54,7 +54,9 @@ Vagrant.configure("2") do |config|
   	worker3.vm.network "private_network", ip: "10.0.0.112"
   end
   
+  config.vm.provision "shell", inline: "sudo chown -R vagrant /home/ubuntu/.ssh"
   config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/home/ubuntu/.ssh/authorized_keys"
+  config.vm.provision "shell", inline: "sudo chown -R ubuntu /home/ubuntu/.ssh"
   #config.vm.provision "shell", inline: $script
 
 end
